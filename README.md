@@ -6,7 +6,7 @@ An academic DBMS project for exploring a Multi-Vendor E-Commerce marketplace and
 
 > **Course:** Database Management Systems (DBMS)  
 > **Course Assessment:** Mini-Project / Lab Assessment (DA2)  
-> **Course Professor:** Dr. Sobhita Ahila  
+> **Course Professor:** Dr. Sobitha Ahila  
 > **Project Topic:** Multi-Vendor E-Commerce Platform  
 > **Branch:** `Harsh` (Feature Branch: *Premium Animation Systems & Cloudflare Deployment Architecture*)  
 > **Live Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
@@ -378,4 +378,4 @@ ORDER BY gross_sales_volume DESC;
 
 ## 📜 Academic Disclaimer
 
-This project is submitted in partial fulfillment of the requirements for the **Database Management Systems (DBMS)** course under the guidance of **Dr. Sobhita Ahila**. All schemas, APIs, and client architectures are built for educational evaluation and demonstrate principles of relational database design, query optimization, foreign key referential integrity, and modern full-stack web engineering.
+This project is submitted in partial fulfillment of the requirements for the **Database Management Systems (DBMS)** course under the guidance of **Dr. Sobitha Ahila**. All schemas, APIs, and client architectures are built for educational evaluation and demonstrate principles of relational database design, query optimization, foreign key referential integrity, and modern full-stack web engineering.
