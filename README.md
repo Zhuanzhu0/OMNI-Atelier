@@ -9,7 +9,8 @@ An academic DBMS project for exploring a Multi-Vendor E-Commerce marketplace and
 > **Course Professor:** Dr. Sobhita Ahila  
 > **Project Topic:** Multi-Vendor E-Commerce Platform  
 > **Branch:** `Harsh` (Feature Branch: *Premium Animation Systems & Cloudflare Deployment Architecture*)  
-> **Live Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
+> **Live Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)  
+> **Live Edge Health Check:** [https://omni-atelier.harshzz.workers.dev/api/health](https://omni-atelier.harshzz.workers.dev/api/health)
 
 ---
 
@@ -260,17 +261,33 @@ python -m uvicorn backend.main:app --reload --port 8000
 ```
 
 ### Step 4: Access Application Interfaces
-- **Live Cloudflare Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
-- **Web Application & Storefront (Local):** [http://localhost:8000](http://localhost:8000)
+
+#### 🌐 Public Cloud Interfaces (Live 24/7 — Accessible Anywhere)
+No local server installation required. These run globally on Cloudflare edge infrastructure:
+- **Live Web Application & Storefront:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
+- **Live Cloudflare D1 Backend Health Check:** [https://omni-atelier.harshzz.workers.dev/api/health](https://omni-atelier.harshzz.workers.dev/api/health)
+- **Live SQL Sandbox Console:** Hosted directly inside the web interface on the live domain.
+
+#### 💻 Local Development Interfaces (Local Machine — Port 8000)
+These interfaces are hosted by your local Python FastAPI ASGI server (`python -m uvicorn backend.main:app --port 8000`):
+- **Local Web Application & Storefront:** [http://localhost:8000](http://localhost:8000)
 - **FastAPI Interactive Swagger Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
 - **FastAPI Alternative ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
-- **Backend Health Check:** [http://localhost:8000/api/health](http://localhost:8000/api/health)
+- **Local Backend Health Check:** [http://localhost:8000/api/health](http://localhost:8000/api/health)
+
+> **💡 Exposing Local FastAPI Docs to Public Internet:**  
+> To share interactive Swagger docs or your local backend publicly without cloud deployment, run:
+> ```bash
+> npx cloudflared tunnel --url http://localhost:8000
+> ```
+> This instantly generates a public HTTPS URL (e.g. `https://<tunnel-id>.trycloudflare.com/docs`).
 
 ---
 
 ## ☁️ Cloudflare Deployment Architecture
 
 **🚀 Live Production URL:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)  
+**🩺 Live Health Check:** [https://omni-atelier.harshzz.workers.dev/api/health](https://omni-atelier.harshzz.workers.dev/api/health)  
 👉 **[Open the live console](https://omni-atelier.harshzz.workers.dev/)**
 
 The multi-vendor marketplace is deployed onto the **Cloudflare Ecosystem** for high availability, zero cold starts, global edge caching, and enterprise-grade security.
