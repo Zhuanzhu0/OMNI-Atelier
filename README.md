@@ -1,9 +1,15 @@
 # OmniMarket DBMS – Multi-Vendor E-Commerce Marketplace
+
+An academic DBMS project for exploring a Multi-Vendor E-Commerce marketplace and relational database through a browser. The hosted application uses Cloudflare Workers and SQLite / Cloudflare D1, with a vanilla HTML, CSS, and JavaScript frontend.
+
+[Open the live console](https://omni-atelier.harshzz.workers.dev/)
+
 > **Course:** Database Management Systems (DBMS)  
 > **Course Assessment:** Mini-Project / Lab Assessment (DA2)  
 > **Course Professor:** Dr. Sobhita Ahila  
 > **Project Topic:** Multi-Vendor E-Commerce Platform  
 > **Branch:** `Harsh` (Feature Branch: *Premium Animation Systems & Cloudflare Deployment Architecture*)  
+> **Live Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
 
 ---
 
@@ -25,7 +31,7 @@ The platform bridges relational backend rigor with contemporary luxury e-commerc
 1. **Relational Database Engine:** A normalized 10-table schema built on **SQLite 3** (`omnimarket.db`), strictly enforcing `PRAGMA foreign_keys = ON;`, referential integrity constraints, automated cascade rules, transactional consistency, and analytical query execution.
 2. **RESTful API Service:** Built with **Python 3.12** and **FastAPI**, providing asynchronous endpoint routing, automatic Swagger API documentation (`/docs`), DDL verification, and an educational SQL execution sandbox (`/api/sql`).
 3. **Animated Luxury Storefront:** A bespoke, responsive web interface styled with a luxury *White × Midnight Green* aesthetic, elevated by three dedicated frontend animation systems: **Animated Typography**, **Scroll-Triggered Reveals**, and **Fluid Microinteractions** — engineered with zero layout shifts and complete motion accessibility.
-4. **Cloud-Ready Infrastructure:** Designed for deployment on **Cloudflare** using Cloudflare Pages for high-speed edge static hosting and Cloudflare Tunnel / Workers for secure edge-to-backend routing.
+4. **Cloud-Ready Infrastructure:** Deployed live on **Cloudflare Workers** ([omni-atelier.harshzz.workers.dev](https://omni-atelier.harshzz.workers.dev/)) with edge static delivery and zero cold-start global performance.
 
 ---
 
@@ -254,7 +260,8 @@ python -m uvicorn backend.main:app --reload --port 8000
 ```
 
 ### Step 4: Access Application Interfaces
-- **Web Application & Storefront:** [http://localhost:8000](http://localhost:8000)
+- **Live Cloudflare Deployment:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)
+- **Web Application & Storefront (Local):** [http://localhost:8000](http://localhost:8000)
 - **FastAPI Interactive Swagger Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
 - **FastAPI Alternative ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
 - **Backend Health Check:** [http://localhost:8000/api/health](http://localhost:8000/api/health)
@@ -263,7 +270,10 @@ python -m uvicorn backend.main:app --reload --port 8000
 
 ## ☁️ Cloudflare Deployment Architecture
 
-We will be deploying this multi-vendor marketplace onto the **Cloudflare Ecosystem** for high availability, zero cold starts, global edge caching, and enterprise-grade security.
+**🚀 Live Production URL:** [https://omni-atelier.harshzz.workers.dev/](https://omni-atelier.harshzz.workers.dev/)  
+👉 **[Open the live console](https://omni-atelier.harshzz.workers.dev/)**
+
+The multi-vendor marketplace is deployed onto the **Cloudflare Ecosystem** for high availability, zero cold starts, global edge caching, and enterprise-grade security.
 
 ```
                               CLOUDFLARE GLOBAL EDGE NETWORK
