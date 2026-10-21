@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OMNI ATELIER | Curated Multi-Vendor Marketplace</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABLUlEQVR4nMVXMQ7CMAxMrI68A1Zm2PsFEDs/YGGiTCz8gB3BF7rDzArv6A4ywlVJmxInDjkpUiXHvnPsRLVSiaFthsupeEqTTedFiy+zEee7ozR/HbspRJsbYhCbKNeLWgSEkj8OK7YP8tBpgEoMLZX9cLn3KgWoABCpDzkBVGJAaICQ7BGtd4BbQ4Lv9QUJ8qQlyD+Z+woCHycik3g1IcS5ut3fazLbfAmLKqBsZD8Yj+qV/B3IPXsBYtQeyyIuoHIISsKu562zCHAVgEGbJFLIuA6uNSbBIgJK5r3nNCKoCODcCOBk79pYUW4BAh+cX8HRjvtcTwG4te8TQeQcZH1GW9PZRJjkLk2r/z0TmLMBqMQA+kA1Un85nMlIm8aYsyElaJ0Nu4RIoms6fgGbNphzTlChHQAAAABJRU5ErkJggg==" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="omni-logo.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -174,7 +178,7 @@
       gap: 24px;
     }
 
-    /* Brand Wordmark */
+    /* Brand Wordmark & Logo */
     .brand-group {
       display: flex;
       align-items: center;
@@ -183,13 +187,40 @@
 
     .brand-wordmark {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
+      text-decoration: none;
+      transition: opacity var(--speed-fast) var(--ease-luxury);
+    }
+
+    .brand-wordmark:hover {
+      opacity: 0.92;
+    }
+
+    .brand-logo-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--speed-medium) var(--ease-luxury);
+    }
+
+    .brand-wordmark:hover .brand-logo-mark {
+      transform: scale(1.06);
+    }
+
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
     }
 
     .brand-wordmark .title {
       font-family: var(--font-sans);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -197,6 +228,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      line-height: 1.1;
     }
 
     [data-theme="dark"] .brand-wordmark .title {
@@ -204,12 +236,151 @@
     }
 
     .brand-wordmark .subtitle {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-top: 1px;
+      margin-top: 2px;
+    }
+
+    /* Role Persona Banner */
+    .role-persona-banner {
+      width: 100%;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      padding: 9px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      transition: all var(--speed-medium) var(--ease-luxury);
+      z-index: 90;
+    }
+
+    .role-banner-buyer {
+      background: linear-gradient(90deg, rgba(36, 115, 77, 0.04) 0%, var(--bg-surface) 60%);
+      border-bottom-color: rgba(36, 115, 77, 0.2);
+    }
+
+    .role-banner-seller {
+      background: linear-gradient(90deg, rgba(198, 166, 107, 0.09) 0%, var(--bg-surface) 60%);
+      border-bottom-color: rgba(198, 166, 107, 0.3);
+    }
+
+    .role-banner-admin {
+      background: linear-gradient(90deg, rgba(23, 74, 58, 0.08) 0%, var(--bg-surface) 60%);
+      border-bottom-color: rgba(23, 74, 58, 0.3);
+    }
+
+    .role-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .role-banner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .role-badge-buyer {
+      background: var(--status-success-bg);
+      color: var(--status-success);
+      border: 1px solid rgba(36, 115, 77, 0.25);
+    }
+
+    .role-badge-seller {
+      background: var(--status-warning-bg);
+      color: var(--status-warning);
+      border: 1px solid rgba(153, 101, 21, 0.3);
+    }
+
+    .role-badge-admin {
+      background: var(--accent-gold-subtle);
+      color: var(--brand-emerald);
+      border: 1px solid rgba(198, 166, 107, 0.4);
+    }
+
+    .role-banner-title {
+      font-weight: 600;
+      color: var(--brand-midnight);
+    }
+
+    .role-banner-desc {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .role-banner-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .role-tag-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-ivory);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .studio-tab-btn.btn-disabled-role {
+      opacity: 0.45;
+      cursor: not-allowed !important;
+      position: relative;
+    }
+    .studio-tab-btn.btn-disabled-role:hover {
+      background: transparent !important;
+      color: var(--text-muted) !important;
+    }
+
+    .row-highlight-owner {
+      background: rgba(36, 115, 77, 0.06) !important;
+      border-left: 3px solid var(--status-success) !important;
+    }
+
+    .badge-owner {
+      background: var(--status-success);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      margin-left: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .badge-seller-store {
+      background: #B58434;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      margin-left: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     /* Desktop Navigation Links */
@@ -2253,9 +2424,33 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
 
-        <div class="brand-wordmark" onclick="navigateToTab('storefront')">
-          <span class="title">OMNI ATELIER</span>
-          <span class="subtitle">Curated Multi-Vendor Marketplace</span>
+        <div class="brand-wordmark" onclick="navigateToTab('storefront')" title="Omni Atelier — Curated Multi-Vendor Marketplace">
+          <div class="brand-logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="headerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E5CA9A" />
+                  <stop offset="50%" stop-color="#C5A880" />
+                  <stop offset="100%" stop-color="#9E8058" />
+                </linearGradient>
+                <linearGradient id="headerDarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0B2F26" />
+                  <stop offset="100%" stop-color="#041814" />
+                </linearGradient>
+              </defs>
+              <rect x="4" y="4" width="92" height="92" rx="22" fill="url(#headerDarkBg)" stroke="url(#headerGoldGrad)" stroke-width="3" />
+              <rect x="10" y="10" width="80" height="80" rx="18" fill="none" stroke="url(#headerGoldGrad)" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="3 2" />
+              <path d="M50 16 L52.5 22 L58 24 L52.5 26 L50 32 L47.5 26 L42 24 L47.5 22 Z" fill="url(#headerGoldGrad)" />
+              <path d="M28 78 L50 34 L72 78" fill="none" stroke="url(#headerGoldGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="36" y1="62" x2="64" y2="62" stroke="url(#headerGoldGrad)" stroke-width="3.5" stroke-linecap="round" />
+              <ellipse cx="50" cy="56" rx="21" ry="17" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="88 20" stroke-dashoffset="15" />
+              <polygon points="50,48 54,54 50,60 46,54" fill="url(#headerGoldGrad)" />
+            </svg>
+          </div>
+          <div class="brand-text-col">
+            <span class="title">OMNI ATELIER</span>
+            <span class="subtitle">Curated Multi-Vendor Marketplace</span>
+          </div>
         </div>
       </div>
 
@@ -2266,9 +2461,6 @@
         </a>
         <a class="nav-link" id="nav-stores" onclick="navigateToTab('stores')">
           Ateliers & Stores
-        </a>
-        <a class="nav-link" id="nav-about" onclick="scrollToEditorial()">
-          Provenance
         </a>
         <a class="nav-link" id="nav-studio" onclick="toggleStudioMode()">
           Database Studio
@@ -2311,7 +2503,7 @@
         <button class="studio-tab-btn" id="tab-sql-console" style="color: var(--accent-gold); font-weight: 600;" onclick="switchStudioTab('sql-console')">&#9654; SQL Console</button>
         <button class="studio-tab-btn" id="tab-db-verification" onclick="switchStudioTab('db-verification')">DB Verification</button>
         <button class="studio-tab-btn" id="tab-eer-diagram" onclick="switchStudioTab('eer-diagram')">EER Schema</button>
-        <button class="studio-tab-btn" style="margin-left: auto; color: var(--status-error);" onclick="clearAllDataConfirm()">Reset Database</button>
+        <button class="studio-tab-btn" id="btn-reset-db" style="margin-left: auto; color: var(--status-error);" onclick="clearAllDataConfirm()">Reset Database</button>
       </div>
     </div>
   </header>
@@ -2320,7 +2512,15 @@
   <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileDrawer()">
     <div class="mobile-drawer" onclick="event.stopPropagation()">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
-        <span style="font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Omni Atelier</span>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 100 100" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="92" height="92" rx="22" fill="#0B2F26" stroke="#C5A880" stroke-width="3" />
+            <path d="M50 16 L52.5 22 L58 24 L52.5 26 L50 32 L47.5 26 L42 24 L47.5 22 Z" fill="#C5A880" />
+            <path d="M28 78 L50 34 L72 78" fill="none" stroke="#C5A880" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+            <ellipse cx="50" cy="56" rx="21" ry="17" fill="none" stroke="#FFFFFF" stroke-width="3" />
+          </svg>
+          <span style="font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Omni Atelier</span>
+        </div>
         <button onclick="toggleMobileDrawer()" style="font-size: 20px; color: var(--text-muted);">&times;</button>
       </div>
 
@@ -2334,6 +2534,11 @@
         <button class="btn-secondary" onclick="toggleTheme(); toggleMobileDrawer();" style="width: 100%; justify-content: center;">Toggle Dark / Light Theme</button>
       </div>
     </div>
+  </div>
+
+  <!-- Active Role Persona Banner -->
+  <div id="role-persona-banner-container">
+    <!-- Rendered dynamically by applyRoleState() -->
   </div>
 
   <!-- Primary Dynamic Content Container -->
@@ -2423,7 +2628,7 @@
 
           <div class="accordion-item" id="acc-maker">
             <button class="accordion-trigger" onclick="toggleAccordion('acc-maker')">
-              <span>Atelier & Maker Provenance</span>
+              <span>Atelier & Workshop Origin</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="accordion-content" id="detail-maker-content">
@@ -2619,14 +2824,14 @@
       image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80",
       category: "goods",
       categoryLabel: "Atelier Curations",
-      specs: "Handcrafted artisan curation · Premium materials and strict multi-vendor relational provenance."
+      specs: "Handcrafted artisan curation · Premium materials and certified direct boutique sourcing."
     };
 
     /* ==========================================================================
        DATABASE METADATA & API INTEGRATION (FASTAPI ON PORT 8000)
        ========================================================================== */
     const BACKEND_CONFIG = {
-      baseUrl: 'http://localhost:8000/api'
+      baseUrl: (window.location.origin.includes(':8000') || window.location.protocol === 'file:') ? 'http://localhost:8000/api' : '/api'
     };
 
     const TABLE_METADATA = {
@@ -3204,40 +3409,74 @@
       }
 
       container.innerHTML = `
-        <!-- Hero Section -->
-        <section class="hero-section">
-          <div class="hero-container">
-            <div class="hero-editorial">
-              <span class="hero-tag">EST. 2026 · VERIFIED INDEPENDENT ATELIERS</span>
-              <h1 class="hero-title" aria-label="Designed with Intention. Engineered for Longevity.">
-                <span class="hero-title-line"><span class="word-reveal" style="--w-idx: 0;">Designed</span> <span class="word-reveal" style="--w-idx: 1;">with</span> <span class="word-reveal" style="--w-idx: 2;">Intention.</span></span>
-                <span class="hero-title-line"><span class="word-reveal" style="--w-idx: 3;">Engineered</span> <span class="word-reveal" style="--w-idx: 4;">for</span> <span class="word-reveal" style="--w-idx: 5;">Longevity.</span></span>
-              </h1>
-              <p class="hero-desc">
-                A curated multi-vendor marketplace pairing master artisans with conscious patrons. Direct relational provenance, decentralized fulfillment, and zero intermediate markup.
-              </p>
-              <div class="hero-actions">
-                <a href="#collection-grid" class="btn-primary">
-                  Explore Curations
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-                <button class="btn-secondary" onclick="toggleStudioMode()">
-                  Database Architecture
-                </button>
-              </div>
-            </div>
-
-            <div class="hero-showcase">
-              <div class="hero-image-wrapper">
-                <img src="${PRODUCT_ASSETS[1].image}" alt="Featured Mechanical Keyboard" />
-                <div class="hero-caption">
-                  <span class="caption-title">Atelier Edition 01: Tactile Keyboard</span>
-                  <span class="caption-meta">Hand-assembled by TechZone Flagship · Bangalore</span>
+        <!-- Hero Section (Dynamic by Active Role Perspective) -->
+        ${currentUserRole === 'seller' ? `
+          <section class="hero-section" style="padding: 44px 0 24px 0; background: linear-gradient(180deg, rgba(198, 166, 107, 0.08) 0%, var(--bg-primary) 100%);">
+            <div class="hero-container" style="align-items: center;">
+              <div class="hero-editorial" style="max-width: 740px;">
+                <span class="hero-tag" style="color: var(--status-warning); font-weight: 700;">★ MERCHANT PORTAL · STYLEHUB APPAREL</span>
+                <h1 class="hero-title" style="font-size: 38px; line-height: 1.15; margin-bottom: 12px;">Boutique Catalog & Storefront</h1>
+                <p class="hero-desc" style="font-size: 14px; margin-bottom: 20px;">
+                  Active Merchant: <b>Priya Patel (Seller #2)</b>. Your physical boutique branch is <b>StyleHub Fashion Studio (Store #2 · 45 Linking Road, Bandra West, Mumbai)</b>. Your inventory pieces are highlighted below with gold badges.
+                </p>
+                <div class="hero-actions">
+                  <button class="btn-primary" onclick="openSellerProductModal()">+ List New Boutique Piece</button>
+                  <button class="btn-secondary" onclick="toggleStudioMode()">Open Seller Atelier Hub</button>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ` : (currentUserRole === 'admin' ? `
+          <section class="hero-section" style="padding: 44px 0 24px 0; background: linear-gradient(180deg, rgba(23, 74, 58, 0.08) 0%, var(--bg-primary) 100%);">
+            <div class="hero-container" style="align-items: center;">
+              <div class="hero-editorial" style="max-width: 740px;">
+                <span class="hero-tag" style="color: var(--brand-emerald); font-weight: 700;">🛡️ SUPERUSER INSPECTION · OMNI ATELIER DBMS</span>
+                <h1 class="hero-title" style="font-size: 38px; line-height: 1.15; margin-bottom: 12px;">Multi-Vendor Storefront Inspection</h1>
+                <p class="hero-desc" style="font-size: 14px; margin-bottom: 20px;">
+                  Platform Administrator: <b>Alice Vance (User #1)</b>. Real-time overview of catalog products, boutique store listings, and price points synced directly from SQLite.
+                </p>
+                <div class="hero-actions">
+                  <button class="btn-primary" onclick="toggleStudioMode()">Open Database Studio</button>
+                  <button class="btn-secondary" onclick="switchStudioTab('sql-console'); toggleStudioMode();">&#9654; SQL Console</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        ` : `
+          <section class="hero-section">
+            <div class="hero-container">
+              <div class="hero-editorial">
+                <span class="hero-tag">EST. 2026 · VERIFIED INDEPENDENT ATELIERS</span>
+                <h1 class="hero-title" aria-label="Designed with Intention. Engineered for Longevity.">
+                  <span class="hero-title-line"><span class="word-reveal" style="--w-idx: 0;">Designed</span> <span class="word-reveal" style="--w-idx: 1;">with</span> <span class="word-reveal" style="--w-idx: 2;">Intention.</span></span>
+                  <span class="hero-title-line"><span class="word-reveal" style="--w-idx: 3;">Engineered</span> <span class="word-reveal" style="--w-idx: 4;">for</span> <span class="word-reveal" style="--w-idx: 5;">Longevity.</span></span>
+                </h1>
+                <p class="hero-desc">
+                  A curated multi-vendor marketplace pairing master artisans with conscious patrons. Direct maker origin, decentralized fulfillment, and zero intermediate markup.
+                </p>
+                <div class="hero-actions">
+                  <a href="#collection-grid" class="btn-primary">
+                    Explore Curations
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                  <button class="btn-secondary" onclick="openBagDrawer()">
+                    Shopping Bag
+                  </button>
+                </div>
+              </div>
+
+              <div class="hero-showcase">
+                <div class="hero-image-wrapper">
+                  <img src="${PRODUCT_ASSETS[1].image}" alt="Featured Mechanical Keyboard" />
+                  <div class="hero-caption">
+                    <span class="caption-title">Atelier Edition 01: Tactile Keyboard</span>
+                    <span class="caption-meta">Hand-assembled by TechZone Flagship · Bangalore</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        `)}
 
         <!-- Storefront Catalog Area -->
         <section class="storefront-wrapper" id="collection-grid">
@@ -3265,6 +3504,29 @@
             </div>
           </div>
 
+          <!-- Role-Aware Context Banner in Storefront -->
+          ${currentUserRole === 'seller' ? `
+            <div style="background: var(--status-warning-bg); border: 1px solid rgba(153, 101, 21, 0.25); border-radius: var(--radius-sm); padding: 12px 18px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#996515" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size: 13px; color: var(--status-warning); font-weight: 500;">
+                  <b>Merchant Perspective Active:</b> You are previewing curations as <b>StyleHub Apparel (Store #2)</b>. Your listed boutique items are highlighted with a gold badge.
+                </span>
+              </div>
+              <button class="btn-secondary" style="font-size: 11px; padding: 4px 10px; white-space: nowrap;" onclick="openSellerProductModal()">+ List New Piece</button>
+            </div>
+          ` : (currentUserRole === 'admin' ? `
+            <div style="background: var(--accent-gold-subtle); border: 1px solid rgba(198, 166, 107, 0.35); border-radius: var(--radius-sm); padding: 12px 18px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#174A3A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span style="font-size: 13px; color: var(--brand-emerald); font-weight: 500;">
+                  <b>Administrator Mode:</b> You have full superuser rights over all catalog products, orders, and database tables.
+                </span>
+              </div>
+              <button class="btn-primary" style="font-size: 11px; padding: 4px 10px; white-space: nowrap;" onclick="toggleStudioMode()">Open DBMS Studio</button>
+            </div>
+          ` : '')}
+
           <!-- Product Discovery Grid -->
           ${filtered.length > 0 ? `
             <div class="product-grid">
@@ -3273,9 +3535,10 @@
                 const store = stores.find(s => s.id === p.store_id) || {};
                 const isOutOfStock = (p.stock || 0) <= 0;
                 const isLowStock = (p.stock || 0) > 0 && (p.stock || 0) <= 15;
+                const isMyProduct = (currentUserRole === 'seller' && p.store_id === 2);
 
                 return `
-                  <article class="product-card scroll-reveal" style="--card-index: ${idx % 8};" onclick="openProductDetailModal(${p.id})">
+                  <article class="product-card scroll-reveal ${isMyProduct ? 'row-highlight-owner' : ''}" style="--card-index: ${idx % 8};" onclick="openProductDetailModal(${p.id})">
                     <div class="product-image-container">
                       <img src="${asset.image}" alt="${p.name}" loading="lazy" />
                       <span class="product-badge-corner">${asset.categoryLabel}</span>
@@ -3291,6 +3554,7 @@
                         <span>${store.name || 'Omni Atelier'}</span>
                         <span>·</span>
                         <span>${store.city || 'Direct'}</span>
+                        ${isMyProduct ? '<span class="badge-seller-store">My Boutique Piece</span>' : ''}
                       </div>
                       <h3 class="product-name">${p.name}</h3>
                       <div class="product-meta-row">
@@ -3312,37 +3576,6 @@
               <button class="btn-secondary" style="margin-top: 16px;" onclick="setCategoryFilter('all'); handleSearch('');">Reset Filters</button>
             </div>
           `}
-        </section>
-
-        <!-- Editorial / Provenance Section -->
-        <section class="editorial-section" id="editorial-provenance">
-          <div class="editorial-container">
-            <div class="editorial-image-frame scroll-reveal">
-              <img id="editorial-parallax-img" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Artisan Craftsmanship" />
-            </div>
-
-            <div class="editorial-content scroll-reveal">
-              <span class="editorial-subtitle">PROVENANCE & RELATIONAL INTEGRITY</span>
-              <h2 class="editorial-title">Direct from Verified Workshops. Zero Intermediaries.</h2>
-              <p class="editorial-body">
-                OmniMarket operates on a strict relational schema where every product is tied directly to a certified physical storefront. By eliminating intermediate distributors, our patrons enjoy transparent pricing while creators retain genuine ownership of their work.
-              </p>
-              <div class="editorial-stats-row">
-                <div class="editorial-stat-item scroll-reveal" style="--stagger: 0;">
-                  <div class="num">${stores.length}</div>
-                  <div class="label">Verified Ateliers</div>
-                </div>
-                <div class="editorial-stat-item scroll-reveal" style="--stagger: 1;">
-                  <div class="num">100%</div>
-                  <div class="label">Direct Provenance</div>
-                </div>
-                <div class="editorial-stat-item scroll-reveal" style="--stagger: 2;">
-                  <div class="num">SQLite</div>
-                  <div class="label">Relational Integrity</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
 
         <!-- Compact Trust & Service Section -->
@@ -3413,8 +3646,7 @@
     }
 
     function scrollToEditorial() {
-      const el = document.getElementById('editorial-provenance');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     /* ==========================================================================
@@ -3483,88 +3715,298 @@
       const db = localDB;
 
       if (tab === 'dashboard') {
-        const totalRevenue = (db.payments || [])
-          .filter(p => p.pay_status === 'completed')
-          .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+        if (currentUserRole === 'seller') {
+          // Dedicated Merchant Portal for StyleHub Apparel (Priya Patel, Seller #2, Store #2)
+          const styleHubProducts = (db.products || []).filter(p => p.store_id === 2);
+          const styleHubProductIds = new Set(styleHubProducts.map(p => p.id));
+          const styleHubStock = styleHubProducts.reduce((sum, p) => sum + (parseInt(p.stock) || 0), 0);
+          
+          const styleHubOrderItems = (db.ordered_items || []).filter(item => styleHubProductIds.has(item.product_id));
+          const styleHubRevenue = styleHubOrderItems.reduce((sum, item) => sum + ((parseFloat(item.price) || 0) * (parseInt(item.qty) || 1)), 0);
+          
+          const styleHubWithdrawals = (db.withdrawals || []).filter(w => w.seller_id === 2);
+          const styleHubPendingPayout = styleHubWithdrawals.filter(w => w.status === 'pending').reduce((sum, w) => sum + (parseFloat(w.amount) || 0), 0);
+          const styleHubSettledPayout = styleHubWithdrawals.filter(w => w.status === 'completed').reduce((sum, w) => sum + (parseFloat(w.amount) || 0), 0);
+          
+          const relevantOrderIds = new Set(styleHubOrderItems.map(i => i.order_id));
+          const styleHubOrders = (db.orders || []).filter(o => relevantOrderIds.has(o.id));
 
-        const totalOrders = (db.orders || []).length;
-        const totalProducts = (db.products || []).length;
-        const totalStores = (db.stores || []).length;
-        const totalUsers = (db.users || []).length;
-        const pendingWithdrawals = (db.withdrawals || []).filter(w => w.status === 'pending').length;
+          container.innerHTML = `
+            <div class="studio-wrapper">
+              <div class="page-header">
+                <div class="page-title">
+                  <h2>StyleHub Apparel — Boutique Studio</h2>
+                  <p>Merchant operations portal for <b>Priya Patel</b> · Linked to Boutique: <b>StyleHub Fashion Studio (Store #2 · Mumbai)</b>.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                  <button class="btn-primary" onclick="openSellerProductModal()">+ List Boutique Piece</button>
+                  <button class="btn-secondary" onclick="openSellerWithdrawalModal()">+ Request Payout</button>
+                </div>
+              </div>
 
-        container.innerHTML = `
-          <div class="studio-wrapper">
-            <div class="page-header">
-              <div class="page-title">
-                <h2>Database System Overview</h2>
-                <p>Live metrics and record aggregations computed directly from <code>backend/omnimarket.db</code>.</p>
+              <!-- Seller Key Metrics Grid -->
+              <div class="metrics-grid">
+                <div class="metric-box scroll-reveal" style="--stagger: 0;">
+                  <span class="label">Boutique Settled Sales</span>
+                  <span class="value">&#8377;${styleHubRevenue.toLocaleString('en-IN')}</span>
+                  <span class="subtext">From orders with StyleHub items</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 1;">
+                  <span class="label">Active Inventory</span>
+                  <span class="value">${styleHubProducts.length} Items (${styleHubStock} Units)</span>
+                  <span class="subtext">Published in Store #2</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 2;">
+                  <span class="label">Pending Liquidation</span>
+                  <span class="value">&#8377;${styleHubPendingPayout.toLocaleString('en-IN')}</span>
+                  <span class="subtext">${styleHubWithdrawals.filter(w => w.status === 'pending').length} pending withdrawal request(s)</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 3;">
+                  <span class="label">Settled Payouts</span>
+                  <span class="value">&#8377;${styleHubSettledPayout.toLocaleString('en-IN')}</span>
+                  <span class="subtext">Completed bank settlements</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 4;">
+                  <span class="label">Boutique Branch</span>
+                  <span class="value">Mumbai · 4.70★</span>
+                  <span class="subtext">45 Linking Road, Bandra West</span>
+                </div>
               </div>
-              <div>
-                <button class="btn-primary" onclick="switchStudioTab('sql-console')">Open SQL Console</button>
-              </div>
-            </div>
 
-            <!-- Key Metrics Grid -->
-            <div class="metrics-grid">
-              <div class="metric-box scroll-reveal" style="--stagger: 0;">
-                <span class="label">Settled Revenue</span>
-                <span class="value">&#8377;${totalRevenue.toLocaleString('en-IN')}</span>
-                <span class="subtext">From completed orders</span>
-              </div>
-              <div class="metric-box scroll-reveal" style="--stagger: 1;">
-                <span class="label">Customer Orders</span>
-                <span class="value">${totalOrders}</span>
-                <span class="subtext">Recorded in orders table</span>
-              </div>
-              <div class="metric-box scroll-reveal" style="--stagger: 2;">
-                <span class="label">Product Catalog</span>
-                <span class="value">${totalProducts}</span>
-                <span class="subtext">Active inventory records</span>
-              </div>
-              <div class="metric-box scroll-reveal" style="--stagger: 3;">
-                <span class="label">Active Stores</span>
-                <span class="value">${totalStores}</span>
-                <span class="subtext">Verified boutique branches</span>
-              </div>
-              <div class="metric-box scroll-reveal" style="--stagger: 4;">
-                <span class="label">Registered Users</span>
-                <span class="value">${totalUsers}</span>
-                <span class="subtext">Admins, sellers & patrons</span>
-              </div>
-            </div>
-
-            <!-- Recent Orders Card -->
-            <div class="studio-card">
-              <div class="studio-card-header">
-                <h3>Recent Relational Orders</h3>
-                <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="switchStudioTab('orders')">View All in Table</button>
-              </div>
-              <div class="table-container">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Customer User ID</th>
-                      <th>Status</th>
-                      <th>Total Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${(db.orders || []).slice().reverse().slice(0, 5).map(o => `
+              <!-- StyleHub Products Table -->
+              <div class="studio-card" style="margin-bottom: 24px;">
+                <div class="studio-card-header">
+                  <h3>StyleHub Active Catalog</h3>
+                  <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="switchStudioTab('products')">View All in Products Table</button>
+                </div>
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
                       <tr>
-                        <td><span class="badge-pk">#${o.id}</span></td>
-                        <td><span class="badge-fk">User #${o.user_id}</span></td>
-                        <td><span class="status-badge status-${o.status}">${o.status}</span></td>
-                        <td><b>&#8377;${parseFloat(o.total_price || 0).toLocaleString('en-IN')}</b></td>
+                        <th>Product ID</th>
+                        <th>Piece Name</th>
+                        <th>Unit Price</th>
+                        <th>Available Stock</th>
+                        <th>Category</th>
+                        <th style="text-align: right;">Action</th>
                       </tr>
-                    `).join('')}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      ${styleHubProducts.map(p => {
+                        const asset = PRODUCT_ASSETS[p.id] || DEFAULT_PRODUCT_ASSET;
+                        return `
+                          <tr class="row-highlight-owner">
+                            <td><span class="badge-pk">#${p.id}</span></td>
+                            <td><b>${p.name}</b> <span class="badge-seller-store">StyleHub</span></td>
+                            <td>&#8377;${parseFloat(p.price || 0).toLocaleString('en-IN')}</td>
+                            <td><span class="status-badge ${p.stock > 15 ? 'status-active' : 'status-low-stock'}">${p.stock} units</span></td>
+                            <td>${asset.categoryLabel}</td>
+                            <td style="text-align: right;">
+                              <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openCrudEditModal('products', '${p.id}')">Update Stock</button>
+                            </td>
+                          </tr>
+                        `;
+                      }).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- StyleHub Relevant Orders -->
+              <div class="studio-card">
+                <div class="studio-card-header">
+                  <h3>Recent Orders for StyleHub Pieces</h3>
+                  <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="switchStudioTab('orders')">All Orders Table</button>
+                </div>
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Fulfillment Status</th>
+                        <th>Total Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${styleHubOrders.length > 0 ? styleHubOrders.map(o => `
+                        <tr class="row-highlight-owner">
+                          <td><span class="badge-pk">#${o.id}</span> <span class="badge-seller-store">StyleHub Item</span></td>
+                          <td><span class="badge-fk">User #${o.user_id}</span></td>
+                          <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                          <td><b>&#8377;${parseFloat(o.total_price || 0).toLocaleString('en-IN')}</b></td>
+                        </tr>
+                      `).join('') : `<tr><td colspan="4" style="text-align: center; padding: 24px; color: var(--text-muted);">No orders for StyleHub items yet</td></tr>`}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-        `;
+          `;
+        } else if (currentUserRole === 'buyer') {
+          // Dedicated Patron View for Vikram Singh (User #4)
+          const buyerOrders = (db.orders || []).filter(o => o.user_id === 4);
+          const buyerTotalSpent = buyerOrders.reduce((sum, o) => sum + (parseFloat(o.total_price) || 0), 0);
+          const buyerReviews = (db.reviews || []).filter(r => r.user_id === 4);
+          const bagItemCount = bag.reduce((sum, i) => sum + (i.qty || 1), 0);
+
+          container.innerHTML = `
+            <div class="studio-wrapper">
+              <div class="page-header">
+                <div class="page-title">
+                  <h2>Patron Dashboard — Vikram Singh</h2>
+                  <p>Customer perspective for <b>Vikram Singh</b> (User ID: <code>#4</code> · Patron). Review your purchases, orders and artisanal feedback.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                  <button class="btn-primary" onclick="navigateToTab('storefront')">Browse Atelier Curations</button>
+                  <button class="btn-secondary" onclick="openBagDrawer()">Open Bag (${bagItemCount})</button>
+                </div>
+              </div>
+
+              <!-- Buyer Metrics Grid -->
+              <div class="metrics-grid">
+                <div class="metric-box scroll-reveal" style="--stagger: 0;">
+                  <span class="label">Total Spent</span>
+                  <span class="value">&#8377;${buyerTotalSpent.toLocaleString('en-IN')}</span>
+                  <span class="subtext">From completed orders</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 1;">
+                  <span class="label">Your Orders</span>
+                  <span class="value">${buyerOrders.length} Orders</span>
+                  <span class="subtext">In SQLite relational database</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 2;">
+                  <span class="label">Shopping Bag</span>
+                  <span class="value">${bagItemCount} Items</span>
+                  <span class="subtext">Ready for checkout</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 3;">
+                  <span class="label">Verified Reviews</span>
+                  <span class="value">${buyerReviews.length} Written</span>
+                  <span class="subtext">Saved in reviews table</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 4;">
+                  <span class="label">Account Status</span>
+                  <span class="value">Active Patron</span>
+                  <span class="subtext">vikram.singh@yahoo.com</span>
+                </div>
+              </div>
+
+              <!-- Buyer Orders Card -->
+              <div class="studio-card">
+                <div class="studio-card-header">
+                  <h3>Your Purchase History</h3>
+                  <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="switchStudioTab('orders')">View Orders Table</button>
+                </div>
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Account</th>
+                        <th>Status</th>
+                        <th>Total Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${buyerOrders.length > 0 ? buyerOrders.map(o => `
+                        <tr class="row-highlight-owner">
+                          <td><span class="badge-pk">#${o.id}</span> <span class="badge-owner">Your Order</span></td>
+                          <td><span class="badge-fk">Vikram Singh (User #4)</span></td>
+                          <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                          <td><b>&#8377;${parseFloat(o.total_price || 0).toLocaleString('en-IN')}</b></td>
+                        </tr>
+                      `).join('') : `<tr><td colspan="4" style="text-align: center; padding: 24px; color: var(--text-muted);">No orders recorded yet. Add items to bag and check out!</td></tr>`}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          // Administrator Master View
+          const totalRevenue = (db.payments || [])
+            .filter(p => p.pay_status === 'completed')
+            .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+          const totalOrders = (db.orders || []).length;
+          const totalProducts = (db.products || []).length;
+          const totalStores = (db.stores || []).length;
+          const totalUsers = (db.users || []).length;
+
+          container.innerHTML = `
+            <div class="studio-wrapper">
+              <div class="page-header">
+                <div class="page-title">
+                  <h2>Database System Overview</h2>
+                  <p>Live metrics and record aggregations computed directly from <code>backend/omnimarket.db</code>.</p>
+                </div>
+                <div>
+                  <button class="btn-primary" onclick="switchStudioTab('sql-console')">Open SQL Console</button>
+                </div>
+              </div>
+
+              <!-- Key Metrics Grid -->
+              <div class="metrics-grid">
+                <div class="metric-box scroll-reveal" style="--stagger: 0;">
+                  <span class="label">Settled Revenue</span>
+                  <span class="value">&#8377;${totalRevenue.toLocaleString('en-IN')}</span>
+                  <span class="subtext">From completed orders</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 1;">
+                  <span class="label">Customer Orders</span>
+                  <span class="value">${totalOrders}</span>
+                  <span class="subtext">Recorded in orders table</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 2;">
+                  <span class="label">Product Catalog</span>
+                  <span class="value">${totalProducts}</span>
+                  <span class="subtext">Active inventory records</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 3;">
+                  <span class="label">Active Stores</span>
+                  <span class="value">${totalStores}</span>
+                  <span class="subtext">Verified boutique branches</span>
+                </div>
+                <div class="metric-box scroll-reveal" style="--stagger: 4;">
+                  <span class="label">Registered Users</span>
+                  <span class="value">${totalUsers}</span>
+                  <span class="subtext">Admins, sellers & patrons</span>
+                </div>
+              </div>
+
+              <!-- Recent Orders Card -->
+              <div class="studio-card">
+                <div class="studio-card-header">
+                  <h3>Recent Relational Orders</h3>
+                  <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="switchStudioTab('orders')">View All in Table</button>
+                </div>
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer User ID</th>
+                        <th>Status</th>
+                        <th>Total Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${(db.orders || []).slice().reverse().slice(0, 5).map(o => `
+                        <tr>
+                          <td><span class="badge-pk">#${o.id}</span></td>
+                          <td><span class="badge-fk">User #${o.user_id}</span></td>
+                          <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                          <td><b>&#8377;${parseFloat(o.total_price || 0).toLocaleString('en-IN')}</b></td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          `;
+        }
       } else if (tab === 'sql-console') {
         renderSQLConsoleView(container);
       } else if (tab === 'db-verification') {
@@ -3576,11 +4018,32 @@
       }
     }
 
-    /* Generic Studio Table Renderer with Progressive Disclosure */
+    /* Generic Studio Table Renderer with Progressive Disclosure & Role Awareness */
     function renderGenericStudioTable(container, tableKey) {
       const meta = TABLE_METADATA[tableKey] || { label: tableKey, pk: 'id', singular: tableKey };
       const records = localDB[tableKey] || [];
       const columns = TABLE_COLUMNS[tableKey] || (records.length > 0 ? Object.keys(records[0]) : []);
+
+      let actionButtonHtml = '';
+      if (currentUserRole === 'buyer') {
+        if (['roles', 'users', 'sellers', 'stores', 'products', 'withdrawals'].includes(tableKey)) {
+          actionButtonHtml = `<span class="role-tag-pill" style="color: var(--text-muted);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Read-Only for Patrons (Admin Protected)</span>`;
+        } else {
+          actionButtonHtml = `<button class="btn-primary" onclick="openCrudModal('${tableKey}')">+ Add ${meta.singular}</button>`;
+        }
+      } else if (currentUserRole === 'seller') {
+        if (tableKey === 'products') {
+          actionButtonHtml = `<button class="btn-primary" onclick="openSellerProductModal()">+ Add Boutique Piece (StyleHub)</button>`;
+        } else if (tableKey === 'withdrawals') {
+          actionButtonHtml = `<button class="btn-primary" onclick="openSellerWithdrawalModal()">+ Request Payout</button>`;
+        } else if (['roles', 'users', 'sellers'].includes(tableKey)) {
+          actionButtonHtml = `<span class="role-tag-pill" style="color: var(--text-muted);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Administrator Protected</span>`;
+        } else {
+          actionButtonHtml = `<button class="btn-primary" onclick="openCrudModal('${tableKey}')">+ Add ${meta.singular}</button>`;
+        }
+      } else {
+        actionButtonHtml = `<button class="btn-primary" onclick="openCrudModal('${tableKey}')">+ Add ${meta.singular}</button>`;
+      }
 
       container.innerHTML = `
         <div class="studio-wrapper">
@@ -3590,7 +4053,7 @@
               <p>Relational table <code>${tableKey}</code> · Primary Key: <code>${meta.pk}</code> · Total Records: ${records.length}</p>
             </div>
             <div>
-              <button class="btn-primary" onclick="openCrudModal('${tableKey}')">+ Add ${meta.singular}</button>
+              ${actionButtonHtml}
             </div>
           </div>
 
@@ -3608,22 +4071,70 @@
                   </tr>
                 </thead>
                 <tbody>
-                  ${records.length > 0 ? records.map(row => `
-                    <tr>
-                      ${columns.map(c => {
-                        const val = row[c];
-                        if (c === meta.pk) return `<td><span class="badge-pk">${val}</span></td>`;
-                        if (c.endsWith('_id')) return `<td><span class="badge-fk">${val}</span></td>`;
-                        if (c === 'status' || c === 'pay_status') return `<td><span class="status-badge status-${val}">${val}</span></td>`;
-                        if (c === 'price' || c === 'amount' || c === 'total_price') return `<td>&#8377;${parseFloat(val || 0).toLocaleString('en-IN')}</td>`;
-                        return `<td>${val !== null && val !== undefined ? val : ''}</td>`;
-                      }).join('')}
-                      <td style="text-align: right; white-space: nowrap;">
-                        <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openCrudEditModal('${tableKey}', '${row[meta.pk]}')">Edit</button>
-                        <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px; color: var(--status-error);" onclick="deleteRecordPrompt('${tableKey}', '${row[meta.pk]}')">Delete</button>
-                      </td>
-                    </tr>
-                  `).join('') : `<tr><td colspan="${columns.length + 1}" style="text-align: center; padding: 32px; color: var(--text-muted);">No records found in table ${tableKey}</td></tr>` }
+                  ${records.length > 0 ? records.map(row => {
+                    let isOwner = false;
+                    let ownerBadge = '';
+
+                    if (currentUserRole === 'buyer') {
+                      if (tableKey === 'orders' && row.user_id == 4) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-owner">Your Order</span>';
+                      } else if (tableKey === 'reviews' && row.user_id == 4) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-owner">Your Review</span>';
+                      } else if (tableKey === 'users' && row.user_id == 4) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-owner">You</span>';
+                      }
+                    } else if (currentUserRole === 'seller') {
+                      if (tableKey === 'products' && row.store_id == 2) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-seller-store">StyleHub Item</span>';
+                      } else if (tableKey === 'stores' && (row.id == 2 || row.seller_id == 2)) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-seller-store">My Store</span>';
+                      } else if (tableKey === 'withdrawals' && row.seller_id == 2) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-seller-store">StyleHub Payout</span>';
+                      } else if (tableKey === 'sellers' && (row.id == 2 || row.user_id == 3)) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-seller-store">Your Profile</span>';
+                      } else if (tableKey === 'users' && row.user_id == 3) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-seller-store">You</span>';
+                      }
+                    } else if (currentUserRole === 'admin') {
+                      if (tableKey === 'users' && row.user_id == 1) {
+                        isOwner = true;
+                        ownerBadge = '<span class="badge-owner" style="background: var(--brand-emerald);">Superuser</span>';
+                      }
+                    }
+
+                    const isProtected = (currentUserRole === 'buyer' && ['roles', 'users', 'sellers', 'stores', 'products', 'withdrawals'].includes(tableKey)) ||
+                                        (currentUserRole === 'seller' && ['roles', 'users', 'sellers'].includes(tableKey));
+
+                    return `
+                      <tr class="${isOwner ? 'row-highlight-owner' : ''}">
+                        ${columns.map((c, colIdx) => {
+                          const val = row[c];
+                          const badgeSnippet = (colIdx === 0 && ownerBadge) ? ownerBadge : '';
+                          if (c === meta.pk) return `<td><span class="badge-pk">${val}</span> ${badgeSnippet}</td>`;
+                          if (c.endsWith('_id')) return `<td><span class="badge-fk">${val}</span></td>`;
+                          if (c === 'status' || c === 'pay_status') return `<td><span class="status-badge status-${val}">${val}</span></td>`;
+                          if (c === 'price' || c === 'amount' || c === 'total_price') return `<td>&#8377;${parseFloat(val || 0).toLocaleString('en-IN')}</td>`;
+                          return `<td>${val !== null && val !== undefined ? val : ''}</td>`;
+                        }).join('')}
+                        <td style="text-align: right; white-space: nowrap;">
+                          ${isProtected ? `
+                            <span style="font-size: 11px; color: var(--text-muted); font-style: italic;">Protected</span>
+                          ` : `
+                            <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openCrudEditModal('${tableKey}', '${row[meta.pk]}')">Edit</button>
+                            <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px; color: var(--status-error);" onclick="deleteRecordPrompt('${tableKey}', '${row[meta.pk]}')">Delete</button>
+                          `}
+                        </td>
+                      </tr>
+                    `;
+                  }).join('') : `<tr><td colspan="${columns.length + 1}" style="text-align: center; padding: 32px; color: var(--text-muted);">No records found in table ${tableKey}</td></tr>` }
                 </tbody>
               </table>
             </div>
@@ -4124,10 +4635,14 @@
 
       if (buyers.length > 0) {
         buyerSelect.innerHTML = buyers.map(b => `
-          <option value="${b.user_id}">${b.first_name} ${b.last_name} (${b.email})</option>
+          <option value="${b.user_id}" ${b.user_id === 4 ? 'selected' : ''}>${b.first_name} ${b.last_name} (${b.email})</option>
         `).join('');
       } else {
-        buyerSelect.innerHTML = `<option value="4">Vikram Singh (Default Patron)</option>`;
+        buyerSelect.innerHTML = `<option value="4" selected>Vikram Singh (Default Patron)</option>`;
+      }
+
+      if (currentUserRole === 'buyer') {
+        buyerSelect.value = "4";
       }
 
       document.getElementById('checkout-modal').classList.add('active');
@@ -4227,7 +4742,176 @@
 
     function handleRoleSwitch(role) {
       currentUserRole = role;
-      showToast(`Perspective switched to ${role.toUpperCase()}`, 'info');
+      try {
+        localStorage.setItem('omnimarket_role', role);
+      } catch (e) {}
+
+      // AUTO-TRANSITION ACTIVE VIEW FOR IMMEDIATE VISIBLE FEEDBACK:
+      const subNav = document.getElementById('studio-sub-nav');
+      const studioNav = document.getElementById('nav-studio');
+      const storeNav = document.getElementById('nav-storefront');
+
+      if (role === 'seller') {
+        // Automatically switch view to the Seller Boutique Studio
+        currentTab = 'studio';
+        studioSubTab = 'dashboard';
+        isStudioMode = true;
+        if (subNav) subNav.classList.add('visible');
+        document.querySelectorAll('.primary-nav .nav-link').forEach(link => link.classList.remove('active'));
+        if (studioNav) {
+          studioNav.classList.add('active');
+          studioNav.innerHTML = `Seller Atelier <span class="tag-pill" style="background: #B58434; color: #fff;">StyleHub</span>`;
+        }
+        switchStudioTab('dashboard');
+      } else if (role === 'admin') {
+        // Automatically switch view to Database Studio DBMS Overview
+        currentTab = 'studio';
+        studioSubTab = 'dashboard';
+        isStudioMode = true;
+        if (subNav) subNav.classList.add('visible');
+        document.querySelectorAll('.primary-nav .nav-link').forEach(link => link.classList.remove('active'));
+        if (studioNav) {
+          studioNav.classList.add('active');
+          studioNav.innerHTML = `Database Studio <span class="tag-pill">DBMS</span>`;
+        }
+        switchStudioTab('dashboard');
+      } else {
+        // Buyer / Patron Mode -> Return directly to Curated Collection Storefront
+        currentTab = 'storefront';
+        isStudioMode = false;
+        if (subNav) subNav.classList.remove('visible');
+        document.querySelectorAll('.primary-nav .nav-link').forEach(link => link.classList.remove('active'));
+        if (storeNav) storeNav.classList.add('active');
+        if (studioNav) studioNav.innerHTML = `Database Studio <span class="tag-pill">DBMS</span>`;
+        renderCurrentView();
+      }
+
+      applyRoleState();
+      
+      const roleName = role === 'buyer' 
+        ? 'BUYER / PATRON (Vikram Singh)' 
+        : (role === 'seller' ? 'SELLER / MERCHANT (StyleHub Apparel)' : 'ADMINISTRATOR (Alice Vance)');
+      showToast(`Switched perspective to ${roleName}`, 'info');
+    }
+
+    function applyRoleState() {
+      const select = document.getElementById('active-user-role');
+      if (select && select.value !== currentUserRole) {
+        select.value = currentUserRole;
+      }
+
+      // Update Navigation Tab Labels according to active role
+      const studioNav = document.getElementById('nav-studio');
+      if (studioNav) {
+        if (currentUserRole === 'seller') {
+          studioNav.innerHTML = `Seller Atelier <span class="tag-pill" style="background: #B58434; color: #fff;">StyleHub</span>`;
+        } else {
+          studioNav.innerHTML = `Database Studio <span class="tag-pill">DBMS</span>`;
+        }
+      }
+
+      // 1. Render Active Role Persona Banner
+      const bannerContainer = document.getElementById('role-persona-banner-container');
+      if (bannerContainer) {
+        if (currentUserRole === 'buyer') {
+          bannerContainer.innerHTML = `
+            <div class="role-persona-banner role-banner-buyer">
+              <div class="role-banner-left">
+                <span class="role-banner-badge role-badge-buyer">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Buyer Mode
+                </span>
+                <span class="role-banner-title">Vikram Singh <span style="font-weight: 400; color: var(--text-muted);">(Patron #4 · <code>vikram.singh@yahoo.com</code>)</span></span>
+                <span class="role-banner-desc">Curated catalog shopping, bag checkout & reviews active. System DB resets & user administration locked.</span>
+              </div>
+              <div class="role-banner-right">
+                <span class="role-tag-pill">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  Auto-Checkout as Vikram
+                </span>
+                <button class="btn-secondary" style="font-size: 11px; padding: 4px 10px;" onclick="navigateToTab('storefront')">Shop Curations</button>
+              </div>
+            </div>
+          `;
+        } else if (currentUserRole === 'seller') {
+          bannerContainer.innerHTML = `
+            <div class="role-persona-banner role-banner-seller">
+              <div class="role-banner-left">
+                <span class="role-banner-badge role-badge-seller">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  Seller Mode
+                </span>
+                <span class="role-banner-title">StyleHub Apparel <span style="font-weight: 400; color: var(--text-muted);">(Priya Patel · Seller #2, Store #2)</span></span>
+                <span class="role-banner-desc">Managing Mumbai boutique branch, inventory catalog & sales payouts. Platform user tables locked.</span>
+              </div>
+              <div class="role-banner-right">
+                <span class="role-tag-pill">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Bandra West, Mumbai
+                </span>
+                <button class="btn-secondary" style="font-size: 11px; padding: 4px 10px;" onclick="openSellerProductModal()">+ Add Product</button>
+              </div>
+            </div>
+          `;
+        } else {
+          bannerContainer.innerHTML = `
+            <div class="role-persona-banner role-banner-admin">
+              <div class="role-banner-left">
+                <span class="role-banner-badge role-badge-admin">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Administrator Mode
+                </span>
+                <span class="role-banner-title">Alice Vance <span style="font-weight: 400; color: var(--text-muted);">(Superuser #1 · Platform Admin)</span></span>
+                <span class="role-banner-desc">Master DBMS Control: Full CRUD on all 10 relational tables, raw SQL console sandbox & database reset unlocked.</span>
+              </div>
+              <div class="role-banner-right">
+                <span class="role-tag-pill" style="border-color: var(--accent-gold); color: var(--accent-gold);">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                  Full Master Privileges
+                </span>
+                <button class="btn-primary" style="font-size: 11px; padding: 4px 10px;" onclick="switchStudioTab('sql-console')">SQL Console</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // 2. Update Studio Sub-Nav Reset Button Permissions
+      const resetBtn = document.getElementById('btn-reset-db');
+      if (resetBtn) {
+        if (currentUserRole === 'admin') {
+          resetBtn.className = 'studio-tab-btn';
+          resetBtn.style.color = 'var(--status-error)';
+          resetBtn.title = 'Reset database to initial seed data';
+          resetBtn.innerHTML = 'Reset Database';
+          resetBtn.onclick = clearAllDataConfirm;
+        } else {
+          resetBtn.className = 'studio-tab-btn btn-disabled-role';
+          resetBtn.style.color = 'var(--text-muted)';
+          resetBtn.title = 'Administrator role required to reset database';
+          resetBtn.innerHTML = '🔒 Reset DB (Admin Only)';
+          resetBtn.onclick = () => showToast('Action Restricted: Only Administrator (Alice Vance) can reset the database. Switch to Administrator in the top right dropdown.', 'warning');
+        }
+      }
+
+      // 3. Re-render Current View
+      renderCurrentView();
+    }
+
+    function openSellerProductModal() {
+      openCrudModal('products');
+      setTimeout(() => {
+        const storeInput = document.getElementById('crud_store_id');
+        if (storeInput) storeInput.value = '2'; // StyleHub Fashion Studio (Store #2)
+      }, 80);
+    }
+
+    function openSellerWithdrawalModal() {
+      openCrudModal('withdrawals');
+      setTimeout(() => {
+        const sellerInput = document.getElementById('crud_seller_id');
+        if (sellerInput) sellerInput.value = '2'; // StyleHub Apparel (Seller #2)
+      }, 80);
     }
 
     function toggleMobileDrawer() {
@@ -4349,6 +5033,17 @@
     /* Insert Modal Setup */
     function openCrudModal(tableKey) {
       tableKey = tableKey || crudCurrentTable || 'products';
+
+      // Role permission check
+      if (currentUserRole === 'buyer' && ['roles', 'users', 'sellers', 'stores', 'products', 'withdrawals'].includes(tableKey)) {
+        showToast(`Action Restricted: Patrons have read-only access to table '${tableKey}'. Switch role to Administrator in the header to modify schema.`, 'warning');
+        return;
+      }
+      if (currentUserRole === 'seller' && ['roles', 'users', 'sellers'].includes(tableKey)) {
+        showToast(`Action Restricted: Merchants cannot create records in '${tableKey}'. Switch role to Administrator in the header.`, 'warning');
+        return;
+      }
+
       crudCurrentTable = tableKey;
       crudCurrentId = null;
       const meta = TABLE_METADATA[tableKey] || { label: tableKey, singular: tableKey, pk: 'id' };
@@ -4546,6 +5241,15 @@
     }
 
     async function deleteRecordPrompt(tableKey, id) {
+      if (currentUserRole === 'buyer') {
+        showToast(`Action Restricted: Patrons have read-only permissions for database records. Switch to Administrator.`, 'warning');
+        return;
+      }
+      if (currentUserRole === 'seller' && ['roles', 'users', 'sellers', 'stores'].includes(tableKey)) {
+        showToast(`Action Restricted: Merchants cannot delete records from '${tableKey}'. Switch to Administrator.`, 'warning');
+        return;
+      }
+
       if (!confirm(`Delete record #${id} from ${tableKey}? This triggers SQLite CASCADE referential checks.`)) return;
       try {
         await apiService.deleteRecord(tableKey, id);
@@ -4566,6 +5270,10 @@
     });
 
     async function clearAllDataConfirm() {
+      if (currentUserRole !== 'admin') {
+        showToast("Action Restricted: Only Administrator (Alice Vance) can reset the database. Please switch role in top right dropdown.", "warning");
+        return;
+      }
       if (!confirm("Reset database to initial seed state in SQLite?")) return;
       try {
         const res = await apiService.executeSQL("SELECT 'DB reset requested';");
@@ -4665,9 +5373,12 @@
       document.documentElement.setAttribute('data-theme', storedTheme);
       document.getElementById('theme-btn-label').textContent = storedTheme === 'light' ? 'Dark' : 'Light';
 
+      const storedRole = localStorage.getItem('omnimarket_role') || 'buyer';
+      currentUserRole = storedRole;
+
       updateBagUI();
       await apiService.syncAll();
-      await renderCurrentView();
+      applyRoleState();
       initScrollAnimations();
       initParallax();
     });
