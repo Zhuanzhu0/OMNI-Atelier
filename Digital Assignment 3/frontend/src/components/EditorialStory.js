@@ -18,7 +18,7 @@ export function createEditorialStory(onInspectDbClick) {
             Craftsmanship Without Abstraction. <em>Integrity Without Compromise.</em>
           </h2>
           <p class="manifesto-body">
-            Just as our master leatherworkers refuse synthetic veneers and our acoustic engineers eschew compressed signal paths, Omni Atelier rejects opaque ORM layers. Every query, mutation, and relational join is executed through direct, unadulterated Java JDBC with explicit connection lifecycle control.
+            Just as our master leatherworkers refuse synthetic veneers and our acoustic engineers eschew compressed signal paths, Omni Atelier rejects opaque ORM layers. Every query, mutation, and relational join is explicit, parameterized SQL running on CockroachDB distributed SQL with explicit transaction boundaries.
           </p>
           <p class="manifesto-body">
             When a patron commissions a handcrafted artifact, our distributed consensus layer verifies real-time stock balances across 10 normalized relational tables before atomically committing the transaction.
@@ -32,14 +32,14 @@ export function createEditorialStory(onInspectDbClick) {
 
         <!-- Right Architectural Principles Cards -->
         <div class="manifesto-cards">
-          <!-- Card 1: Direct JDBC -->
+          <!-- Card 1: Parameterized SQL -->
           <div class="manifesto-card">
             <div class="manifesto-card-header">
               <span class="manifesto-card-icon">⚡</span>
-              <h3 class="manifesto-card-title">100% Direct Java JDBC Persistence</h3>
+              <h3 class="manifesto-card-title">Explicit, Parameterized SQL</h3>
             </div>
             <p class="manifesto-card-text">
-              Zero ORM overhead. Every relational read and write leverages strictly parameterized <code>PreparedStatement</code> and HikariCP connection pools, preventing SQL injection while guaranteeing predictable sub-millisecond execution.
+              Zero ORM overhead. Every relational read and write uses strictly parameterized queries over pooled Cloudflare Hyperdrive connections, preventing SQL injection while guaranteeing predictable sub-millisecond execution.
             </p>
           </div>
 
@@ -54,14 +54,14 @@ export function createEditorialStory(onInspectDbClick) {
             </p>
           </div>
 
-          <!-- Card 3: Vector Database -->
+          <!-- Card 3: Distributed SQL -->
           <div class="manifesto-card">
             <div class="manifesto-card-header">
-              <span class="manifesto-card-icon">✨</span>
-              <h3 class="manifesto-card-title">Qdrant 384d Semantic Discovery</h3>
+              <span class="manifesto-card-icon">✦</span>
+              <h3 class="manifesto-card-title">CockroachDB Distributed SQL</h3>
             </div>
             <p class="manifesto-card-text">
-              Integrated with the official Qdrant REST API v1. FastEmbed ONNX creates 384-dimensional dense vectors to calculate nearest neighbors in Cosine space, enabling natural-language product discovery.
+              Every vendor, order, and payment lives in CockroachDB: Raft-replicated ranges, SERIALIZABLE isolation by default, and automatic client-side retry of conflicting checkouts (SQLSTATE 40001).
             </p>
           </div>
         </div>

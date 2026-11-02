@@ -3,7 +3,7 @@
  * Architectural split layout, confident editorial typography, live metrics, and interactive spotlight card.
  */
 
-export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQuickView) {
+export function createHero(onExploreClick, onSearchClick, onSpotlightQuickView) {
   const hero = document.createElement('section');
   hero.className = 'hero-section';
   hero.id = 'hero-section';
@@ -14,8 +14,8 @@ export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQui
         <!-- Left Editorial Content Column -->
         <div class="hero-content">
           <div class="hero-badge-row">
-            <span class="badge badge-emerald">Spring Boot 3.3.5 × Java 17</span>
-            <span class="badge badge-gold">100% Direct JDBC Persistence</span>
+            <span class="badge badge-emerald">Cloudflare Workers × Hyperdrive</span>
+            <span class="badge badge-gold">CockroachDB Distributed SQL</span>
           </div>
 
           <h1 class="hero-title">
@@ -23,15 +23,15 @@ export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQui
           </h1>
 
           <p class="hero-description">
-            A bespoke multi-vendor commerce platform where uncompromising physical craftsmanship converges with distributed database architecture. Engineered with direct Java JDBC, parameterized statements, explicit ACID isolation, and 384-dimensional Qdrant vector semantic discovery.
+            A bespoke multi-vendor commerce platform where uncompromising physical craftsmanship converges with distributed database architecture. Engineered with parameterized statements, and serializable ACID transactions on CockroachDB distributed SQL.
           </p>
 
           <div class="hero-cta-group">
             <a href="#storefront" class="btn btn-primary btn-lg" id="hero-explore-btn">
               Explore 36 Curations ↓
             </a>
-            <button class="btn btn-outline btn-lg" id="hero-vector-btn">
-              ✨ Experience Qdrant AI
+            <button class="btn btn-outline btn-lg" id="hero-search-btn">
+              Search the Catalog
             </button>
           </div>
 
@@ -50,7 +50,7 @@ export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQui
               <p>Settled Volume</p>
             </div>
             <div class="hero-metric-item">
-              <h4 id="hero-stat-engine" style="color:var(--color-emerald);">100% JDBC</h4>
+              <h4 id="hero-stat-engine" style="color:var(--color-emerald);">CockroachDB</h4>
               <p>Zero-ORM Rigor</p>
             </div>
           </div>
@@ -89,7 +89,7 @@ export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQui
 
               <div class="showcase-tags">
                 <span class="hotspot-pill">✦ 6063 Billet Aluminum</span>
-                <span class="hotspot-pill">✦ 384d FastEmbed Vector</span>
+                <span class="hotspot-pill">✦ CockroachDB Serializable</span>
                 <span class="hotspot-pill">✦ Strict ACID Foreign Keys</span>
               </div>
 
@@ -115,9 +115,9 @@ export function createHero(onExploreClick, onSemanticSearchClick, onSpotlightQui
     if (onExploreClick) onExploreClick();
   });
 
-  const vectorBtn = hero.querySelector('#hero-vector-btn');
-  vectorBtn.addEventListener('click', () => {
-    if (onSemanticSearchClick) onSemanticSearchClick();
+  const searchBtn = hero.querySelector('#hero-search-btn');
+  searchBtn.addEventListener('click', () => {
+    if (onSearchClick) onSearchClick();
   });
 
   const inspectBtn = hero.querySelector('#hero-spotlight-inspect');

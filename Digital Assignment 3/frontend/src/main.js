@@ -1,7 +1,7 @@
 /**
  * OMNI ATELIER (DA3) — APPLICATION ENTRY & STATE ORCHESTRATOR
  * Orchestrates Storefront, Category Discovery, Editorial Campaign, Cart Drawer,
- * Product Modal with Qdrant Recommendations, and Professor Academic Suite.
+ * Product Modal with related-product recommendations, and Professor Academic Suite.
  */
 
 import './styles/main.css';
@@ -78,7 +78,7 @@ async function initApp() {
       if (storefront) storefront.scrollIntoView({ behavior: 'smooth' });
     },
     () => {
-      if (catalogInstance) catalogInstance.activateSemanticSearch();
+      if (catalogInstance) catalogInstance.focusSearch();
     },
     (productId, autoAddToCart = false) => {
       const prod = rawProducts.find(p => p.id === productId);
@@ -158,7 +158,7 @@ async function initApp() {
 
   updateCartUI();
 
-  // Load live data from Java Spring Boot backend
+  // Load live data from the Worker API
   await checkHealth();
   await fetchInitialData();
 }
@@ -190,16 +190,17 @@ async function checkHealth() {
 
   try {
     const health = await api.getHealth();
+    if (health.database !== 'connected') throw new Error(health.message);
     badge.className = 'badge badge-success';
     badge.title = `Engine: ${health.engine} | Driver: ${health.driver}`;
     if (dot) dot.className = 'pulse-dot';
-    text.textContent = `JDBC: ${health.engine || 'Connected'}`;
-    if (engineInd) engineInd.textContent = `ENGINE: ${health.engine?.toUpperCase() || 'COCKROACHDB'} (100% DIRECT JDBC)`;
+    text.textContent = `DB: ${health.engine || 'Connected'}`;
+    if (engineInd) engineInd.textContent = `ENGINE: ${health.engine?.toUpperCase() || 'COCKROACHDB'} CLOUD`;
   } catch (err) {
     badge.className = 'badge badge-gold';
     badge.title = `Backend connection notice: Using offline fallback cache`;
     if (dot) dot.className = 'pulse-dot amber';
-    text.textContent = 'JDBC: Local Offline Cache';
+    text.textContent = 'DB: Offline Cache';
   }
 }
 
@@ -224,11 +225,9 @@ async function fetchInitialData() {
       }
     }
 
-    // Inspect Qdrant status to update top bar
-    const qStatus = await api.getQdrantStatus();
-    if (qStatus && qStatus.pointsCount) {
-      const qInd = document.getElementById('header-qdrant-indicator');
-      if (qInd) qInd.textContent = `QDRANT: ${qStatus.pointsCount} VECTORS · 384D COSINE`;
+    const dbInd = document.getElementById('header-db-indicator');
+    if (dbInd && stats && stats.totalOrders !== undefined) {
+      dbInd.textContent = `COCKROACHDB: ${stats.totalOrders} ORDERS · SERIALIZABLE`;
     }
   } catch (err) {
     console.warn("Could not fetch remote products; will retry on refresh.", err);
